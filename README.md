@@ -1,3 +1,26 @@
+# StakingVault
+
+Kontrak staking ETH dengan reward 1% per hari, dibangun dan diaudit mandiri menggunakan Foundry.
+
+## Deployed Contract (Sepolia Testnet)
+- Address: `0xFEc01fc30D292bF1178f9Ca078Ba96f95DBD600f`
+- [Lihat di Etherscan](https://sepolia.etherscan.io/address/0xFEc01fc30D292bF1178f9Ca078Ba96f95DBD600f)
+
+## Fitur
+- Stake/withdraw ETH dengan reward berjalan seiring waktu
+- Pola Checks-Effects-Interactions untuk mencegah reentrancy
+- Access control dengan modifier `onlyOwner`
+- Reward pool terpisah dari pokok staker (`totalStaked` vs `availableRewardPool()`)
+
+## Test
+```bash
+forge test -vv
+```
+
+5 test mencakup: staking, perhitungan reward berbasis waktu, dan validasi reward pool.
+
+---
+
 ## Foundry
 
 **Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
@@ -9,58 +32,12 @@ Foundry consists of:
 - **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
 - **Chisel**: Fast, utilitarian, and verbose solidity REPL.
 
-## Documentation
-
-https://book.getfoundry.sh/
-
-## Usage
-
 ### Build
-
-```shell
-$ forge build
+```bash
+forge build
 ```
 
 ### Test
-
-```shell
-$ forge test
-```
-
-### Format
-
-```shell
-$ forge fmt
-```
-
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
+```bash
+forge test
 ```

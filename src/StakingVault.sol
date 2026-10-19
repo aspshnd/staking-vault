@@ -92,7 +92,7 @@ contract StakingVault {
     // Withdraw principal + reward
     function withdraw() external whenNotPaused {
         uint256 principal = stakedAmount[msg.sender];
-        require(principal > 0, "Nothing too Withdraw");
+        require(principal > 0, "Nothing to Withdraw");
 
         uint256 reward = calculateReward(msg.sender);
         uint256 totalAmount = principal + reward;
